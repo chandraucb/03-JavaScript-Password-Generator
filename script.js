@@ -40,26 +40,60 @@ function showLengthPrompt(promptMessage, alertMessage) {
   return inputVal
 }
 
-//Function to valid user input for various char type to be included in the password 
+//Function to get user input for various char type to be included in the password 
 function showCharTypeConfirm () {
   let charType = {}
-  charType["lowercase"] = confirm('Include lower case characters?');
   charType["uppercase"] = confirm('Include upper case characters?');
+  charType["lowercase"] = confirm('Include lower case characters?');
   charType["numeric"] = confirm('Include numeric characters?');
   charType["specialcharacter"] = confirm('Include special characters?');
   return  charType;
 }
 
+//Function to create password based upon char type selected by user
+function createPassword(charType, pwdLength) {
+
+  let passwordCharacters = "", password ="" ;
+  let upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  let lowerChars = "abcdefghijklmnopqrstuvwxyz"
+  let numericChars = "0123456789"
+  let splChars ="!@#$%^&*()"
+
+  //check if uppercase chars need to be included
+  if (charType["uppercase"]) {
+    passwordCharacters = upperChars;
+  }
+  //check if lowercase chars need to be included
+  if (charType["lowercase"]) {
+    passwordCharacters = passwordCharacters.concat(lowerChars);
+  }
+  //check if numeric chars need to be included
+  if (charType["numeric"]) {
+    passwordCharacters = passwordCharacters.concat(numericChars);
+  }
+  //check if special chars need to be included
+  if (charType["specialcharacter"]) {
+    passwordCharacters = passwordCharacters.concat(splChars);
+  }
+  //Random generator
+  for (var i = 0; i <= pwdLength; i++) {
+    var randomNumber = Math.floor(Math.random() * passwordCharacters.length);
+    password += passwordCharacters.substring(randomNumber, randomNumber +1);
+   }
+
+   return password
+
+}
+
 //Main password generation function shows various prompts and validates user input
-
 function generatePassword() {
-  
-  let charType = showCharTypeConfirm ()
   //function to check if inputVal is a number and it is between 8 and 128
-  let passwordlength = showLengthPrompt ("Enter length of the password" , "Choose a length of at least 8 characters and no more than 128 characters")
+  let pwdlength = showLengthPrompt ("Enter length of the password" , "Choose a length of at least 8 characters and no more than 128 characters")
 
-  if (passwordlength) { 
-      return "Testpassword"
+  if (pwdlength) { 
+      //Prompt for char type
+      let charType = showCharTypeConfirm ()
+      return createPassword(charType,pwdlength)
   } 
 
   return "Password Generation Cancelled!"
