@@ -10,14 +10,13 @@ function writePassword() {
 
 }
 
-// Reusable function to prompt user with Message and validates user input until the condition is meet
-// Takes 3 parameters 
+// Prompt password length function to prompt user with Message and validates user input until the condition is meet
+// Takes 2 parameters 
 // 1. Prompt Message
 // 2. Alert Message
-// 3. Validation Condition for input value as a string
 // Returns user entered value 
 
-function showPrompt(promptMessage, alertMessage, condition) {
+function showLengthPrompt(promptMessage, alertMessage) {
   let inputVal = ""
 
   while (true) {
@@ -31,24 +30,40 @@ function showPrompt(promptMessage, alertMessage, condition) {
     // Evaluate the condition 
     // Show Alert if condition is false 
     // Otherwise break the loop and return inputValue
-    if (!eval(condition)) {
-      alert(alertMessage)
-    } else {
+    if (isNaN(parseInt(inputVal).val) && parseInt(inputVal) >= 8 && parseInt(inputVal) <= 128) {
       break
-    } 
+    } else {
+      alert(alertMessage)
+    }  
   }
   
   return inputVal
 }
 
-//Main password generation function which calls various prompts and validates user values
+//Function to valid user input for various char type to be included in the password 
+function showCharTypeConfirm () {
+  let charType = {}
+  charType["lowercase"] = confirm('Include lower case characters?');
+  charType["uppercase"] = confirm('Include upper case characters?');
+  charType["numeric"] = confirm('Include numeric characters?');
+  charType["specialcharacter"] = confirm('Include special characters?');
+  return  charType;
+}
+
+//Main password generation function shows various prompts and validates user input
 
 function generatePassword() {
-  //Condition check to if inputVal is a number and it is between 8 and 128
-  let condition = "isNaN(parseInt(inputVal).val) && parseInt(inputVal) >= 8 && parseInt(inputVal) <= 128"
-  var passwordlength = showPrompt ("Enter length of the password" , "Choose a length of at least 8 characters and no more than 128 characters", condition)
   
-  return "Testpassword";
+  let charType = showCharTypeConfirm ()
+  //function to check if inputVal is a number and it is between 8 and 128
+  let passwordlength = showLengthPrompt ("Enter length of the password" , "Choose a length of at least 8 characters and no more than 128 characters")
+
+  if (passwordlength) { 
+      return "Testpassword"
+  } 
+
+  return "Password Generation Cancelled!"
+
 }
 
 // Add event listener to generate button
