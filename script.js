@@ -28,7 +28,9 @@ function showPrompt(promptMessage, alertMessage, condition) {
       return
     }
 
-    // Evaluate the condition and show Alert if it is false otherwise break the loop and return inputValue
+    // Evaluate the condition 
+    // Show Alert if condition is false 
+    // Otherwise break the loop and return inputValue
     if (!eval(condition)) {
       alert(alertMessage)
     } else {
