@@ -15,5 +15,5 @@ Click Generate Password button to create password.
 Application will prompt for various options whether to include uppercase, lowercase, numeric & special character and take length for password. At least one character type with a valid password length is required to create password. When all prompts are answered, new password will be displayed on the page. 
 
 #Reference 
-Crreate password was build based logic explain by below blog post link,
+Crreate password was build based logic explained in below blog post link,
 https://dev.to/code_mystery/random-password-generator-using-javascript-6a

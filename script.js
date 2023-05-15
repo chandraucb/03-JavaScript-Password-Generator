@@ -43,10 +43,18 @@ function showLengthPrompt(promptMessage, alertMessage) {
 //Function to get user input for various char type to be included in the password 
 function showCharTypeConfirm () {
   let charType = {}
-  charType["uppercase"] = confirm('Include upper case characters?');
-  charType["lowercase"] = confirm('Include lower case characters?');
-  charType["numeric"] = confirm('Include numeric characters?');
-  charType["specialcharacter"] = confirm('Include special characters?');
+  while (true) {
+    charType["uppercase"] = confirm('Include upper case characters?');
+    charType["lowercase"] = confirm('Include lower case characters?');
+    charType["numeric"] = confirm('Include numeric characters?');
+    charType["specialcharacter"] = confirm('Include special characters?');
+    //Check if one character type is picked other alert and prompt again!
+    if (Object.values(charType).indexOf(true) > -1) {
+      break
+    } else {
+      alert("Minimum one character type needs to be selected to generate password. Please try again")
+    }
+  }
   return  charType;
 }
 
