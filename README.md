@@ -14,6 +14,6 @@ https://chandraucb.github.io/03-challenge-passworddgenerator/
 Click Generate Password button to create password.
 Application will prompt for various options whether to include uppercase, lowercase, numeric & special character and take length for password. At least one character type with a valid password length is required to create password. When all prompts are answered, new password will be displayed on the page. 
 
-#Reference 
+## Reference 
 Create password was build using logic explained in below blog post,
 https://dev.to/code_mystery/random-password-generator-using-javascript-6a
