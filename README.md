@@ -1,4 +1,4 @@
-# 03-challenge-passworddgenerator
+# 03-JavaScript-Password-Generator
 
 ## Description
 
