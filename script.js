@@ -84,7 +84,7 @@ function createPassword(charType, pwdLength) {
     passwordCharacters = passwordCharacters.concat(splChars);
   }
   //Random generator
-  for (var i = 0; i <= pwdLength-1; i++) {
+  for (var i = 0; i < pwdLength; i++) {
     var randomNumber = Math.floor(Math.random() * passwordCharacters.length);
     password += passwordCharacters.substring(randomNumber, randomNumber +1);
    }
